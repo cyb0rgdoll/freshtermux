@@ -149,10 +149,11 @@ $ ls /usr
 bin  etc  include  lib  libexec  share  src  tmp  var
 ```
 **This can be useful for some programs that must use a standard path.**
-# root authority
- After all, the proot mentioned above is a simulation method, which will have certain limitations.  If the phone is already rooted, although you can switch to root by using su in Ter rootmux, some Ter 但是 mux commands will not work properly. After all, this is not a standard Linux environment.  The solution is to install tsu for root privileges, tsu is an alternative to su in Ter­mux.
 
-Install tsu:
+# Root Authority
+The solution is to install tsu for root privileges, tsu is an alternative to su in Ter­mux.
+
+ Install tsu:
 ```
  pkg i -y tsu
 ```
@@ -255,12 +256,7 @@ The `termux-wake-lock` command prevents the process of the Ter­mux application 
  After the setting is completed, the phone will automatically start Ter­mux and start the SSH server.
 
 # Install a Linux distribution
-- After all, Ter­mux is not a complete Linux environment. If there is a deeper Linux environment requirement, you can install and run a Linux distribution in Ter­mux to simulate a complete Linux environment. You can even install a desktop environment without root. 
 
-
-Here we used [AnLinux](https://github.com/EXALAB/AnLinux-App)
-Its an android app that helps users install Linux distributions in Ter­mux.  It is a guide, its essence is to give you a line of installation instructions for you to execute according to the distribution of your choice.  It's very easy to follow the instructions in the app, so I won't go into details here.
-![app ss](https://i.imgur.com/D2Gw0GP.png)
 
 # Custom extended function buttons
 The default function buttons are too simple and do not have the left and right arrow keys, which is not convenient to use. Fortunately you can `~/.termux/termux.properties` customize the key configuration file.
@@ -271,7 +267,7 @@ The default function buttons are too simple and do not have the left and right a
 ```
 extra-keys = [['ESC','/','-','HOME','UP','END','PGUP','DEL'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP']]
 ```
-# As a lazy person, I usually do it with one click:
+# Easy mode code below, I usually do it with one click on keyboard:
 ```
 mkdir -p ~/.termux && echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP','DEL'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP']]" > ~/.termux/termux.properties
 ```
