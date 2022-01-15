@@ -101,7 +101,7 @@ In addition, the function keys can be moved to the left to call up the text inpu
 
 In addition to supporting the apt command, Ter­mux also encapsulates the pkg command. The pkg command is backward compatible with the apt command. The official recommendation is to use the pkg command, because it will automatically update the apt list when installing or upgrading the package, which means that performing pkg upgrade is equivalent to performing apt update && apt upgrade, which simplifies the operation process.
 
-# few simple default commands
+# Simple default commands
 ```
  pkg search >> search a package
  pkg install >> installation of a package, shorthand pkg i
@@ -112,6 +112,18 @@ In addition to supporting the apt command, Ter­mux also encapsulates the pkg co
  pkg list-installed >> lists installed packages
  pkg files >> show the path to the relevant folder of a package
  pkg clean >> remove unused packages
+ 
+# Customizing Termux
+
+Enable Dark UI Mode in Termux Add this line to your ~/.termux/termux.properties
+
+``` use-black-ui=true ```
+
+Disable Vibration/haptic feedback Add this line to your ~/.termux/termux.properties
+
+``` bell-character=ignore ```
+
+Oh-my-termux
  
 ```
 # Differences between Termux and the standard Linux directory structure
