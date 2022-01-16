@@ -6,9 +6,9 @@ Termux is a powerful Android app which is designed to install linux packages on 
  
 Download termux from [fdroid](https://f-droid.org/packages/com.termux/)
 
-## To install everything in this guide, download the file and put in 
+## To install everything in this guide, download the file, type in terminal;
 ```
-type in bash newscript.sh
+bash newscript.sh
 ```
 
 # Features of this script included. 
@@ -17,10 +17,10 @@ type in bash newscript.sh
   * [Common shortcut keys]
   * [Extended function buttons]
   * [Access external storage]
-  * Sudo / proot 
+  * Sudo / proot, common tools to be installed
   * [Custom extended function buttons 
   * [Themes; colours and fonts]
-  * [Zsh Plugins include 
+  * [Zsh and Plugins included 
   * [A Simple wiki](https://github.com/Towha/Termux/wiki)
   
 
