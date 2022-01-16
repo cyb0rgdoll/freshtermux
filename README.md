@@ -13,15 +13,14 @@ type in bash newscript.sh
 
 # Features of this script included. 
 
-  * [Homescreen](https://github.com/Towha/Termux/blob/master/README.md#the-homescreen-of-termux)
-  * [Common shortcut keys](https://github.com/Towha/Termux#common-shortcut-keys)
-  * [Extended function buttons](https://github.com/Towha/Termux#extended-function-buttons)
-  * [Access external storage](https://github.com/Towha/Termux#access-external-storage)
-  * [SSH connection](https://github.com/Towha/Termux#ssh-connection)
-  * [Custom extended function buttons](https://github.com/Towha/Termux#custom-extended-function-buttons)
-  * [Themes & Zsh](https://github.com/Towha/Termux#install-and-configure-oh-my-zsh)
-  * [Custom startup page](https://github.com/Towha/Termux#modify-the-greeting-of-the-startup-page)
-  * [Cron and tasker information](https://github.com/Towha/Termux#how-to-run-scripts-every-hour-with-the-help-of-cron-or-termux-tasker)
+  * [Homescreen]
+  * [Common shortcut keys]
+  * [Extended function buttons]
+  * [Access external storage]
+  * Sudo / proot 
+  * [Custom extended function buttons 
+  * [Themes; colours and fonts]
+  * [Zsh Plugins include 
   * [A Simple wiki](https://github.com/Towha/Termux/wiki)
   
 
@@ -113,20 +112,8 @@ In addition to supporting the apt command, Ter­mux also encapsulates the pkg co
  pkg list-installed >> lists installed packages
  pkg files >> show the path to the relevant folder of a package
  pkg clean >> remove unused packages
- 
-# Customizing Termux
-
-Enable Dark UI Mode in Termux Add this line to your ~/.termux/termux.properties
-
-``` use-black-ui=true ```
-
-Disable Vibration/haptic feedback Add this line to your ~/.termux/termux.properties
-
-``` bell-character=ignore ```
-
-Oh-my-termux
- 
 ```
+
 # Differences between Termux and the standard Linux directory structure
 Unlike most Linux distributions, Ter­mux does not follow file system hierarchy standards, and you cannot find directories such as / bin, / etc, / usr, / tmp and so on in standard paths.  For convenience, Termux provides a special environment variable: PREFIX, which is equivalent to the / usr directory.
 ```
@@ -369,19 +356,8 @@ $ tree ~/.termux
 └── termux.properties
 ```
 
-# Misc commands not installed / included in the script
+# --- Misc commands not installed / included in the script  ---
 
-# Modify the greeting of the startup page
-![start screen](https://i.imgur.com/TIzjpN9.jpg)
-- This information will be helpful when you first come into contact with Termux, but with a deeper understanding of Termux and the desire to control human instincts, you will definitely want to replace it. I find that most of my friends will use their IDs in large fonts. Way to present.
-
-```
-vi $PREFIX/etc/motd
-```
-And for someone like me who advocates minimalism, choose to keep it from showing.
-```
-touch ~/.hushlogin
-```
 # Replace domestic software source
 ##### https://wiki.termux.com/wiki/Package_Management 
 By default, the software package download speed is very slow. You can speed up the software package download speed by replacing the domestic software source. check the main wiki link for more information
@@ -409,3 +385,27 @@ deb https://main.termux-mirror.ml stable main
 pkg up
 ```
 If the card progresses, exit the process of Termux, reopen it, and run `dpkg --configure -a` to repair it.
+
+# Customizing Termux
+
+Enable Dark UI Mode in Termux Add this line to your ~/.termux/termux.properties
+
+``` use-black-ui=true ```
+
+Disable Vibration/haptic feedback Add this line to your ~/.termux/termux.properties
+
+``` bell-character=ignore ```
+
+# Modify the greeting of the startup page
+![start screen](https://i.imgur.com/TIzjpN9.jpg)
+- This information will be helpful when you first come into contact with Termux, but with a deeper understanding of Termux and the desire to control human instincts, you will definitely want to replace it. I find that most of my friends will use their IDs in large fonts. Way to present.
+
+```
+vi $PREFIX/etc/motd
+```
+Want minimalism? command below to be inserted in motd file.
+```
+touch ~/.hushlogin
+```
+
+
