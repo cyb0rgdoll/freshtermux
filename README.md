@@ -6,12 +6,12 @@ Termux is a powerful Android app which is designed to install linux packages on 
  
 Download termux from [fdroid](https://f-droid.org/packages/com.termux/)
 
-## To install everything in this guide 
+## To install everything in this guide, download the file and put in 
 ```
-bash <(curl -fsSL https://git.io/JvMD6)
+type in bash newscript.sh
 ```
 
-# Everything in this small docs
+# Features of this script included. 
 
   * [Homescreen](https://github.com/Towha/Termux/blob/master/README.md#the-homescreen-of-termux)
   * [Common shortcut keys](https://github.com/Towha/Termux#common-shortcut-keys)
@@ -288,33 +288,6 @@ mkdir -p ~/.termux && echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP
 ```
 termux-reload-settings
 ```
-# Replace domestic software source
-##### https://wiki.termux.com/wiki/Package_Management 
-By default, the software package download speed is very slow. You can speed up the software package download speed by replacing the domestic software source. check the main wiki link for more information
-To prevent modification errors, first back up the source list file:
-```
-cp $PREFIX/etc/apt/sources.list $PREFIX/etc/apt/sources.list.bak
-```
-reduction:cp $PREFIX/etc/apt/sources.list.bak $PREFIX/etc/apt/sources.list
-Use `sed` the command to modify a key:
-```
-sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://main.termux-mirror.ml stable mainn@' $PREFIX/etc/apt/sources.list
-```
-You can also enter `apt edit-sources` manually edited source files. Replace the default official source with the mirror source of  Xeffyr https://main.termux-mirror.ml.
-+ Note: Change this main.termux-mirror.ml to the best mirror you find for you. https://github.com/termux/termux-packages/wiki/Mirrors check from here for more info.
-
-# Check modification:
-```
-$ cat $PREFIX/etc/apt/sources.list
--The main termux repository:
--deb https://dl.bintray.com/termux/termux-packages-24 stable main
-deb https://main.termux-mirror.ml stable main
-```
-# Last update:
-```
-pkg up
-```
-If the card progresses, exit the process of Termux, reopen it, and run `dpkg --configure -a` to repair it.
 
 # Install common tools
 Install some basic common tools to facilitate subsequent tossing.
@@ -324,8 +297,10 @@ pkg i -y git curl wget tree vim nano tmux htop
 # Install and configure Oh My Zsh
 - **Oh My Zsh will not make you a 10x developer ... but you may feel like one.**
 
-- The above sentence comes from [Oh My Zsh README](https://github.com/ohmyzsh/ohmyzsh/blob/master/README.md), which means "pretend to force is the first productivity". 
-- I don't use Oh My Zsh to pretend to make the terminal fancy. As a pragmatist, I really like the automatic suggestion, completion, and code highlighting functions, which greatly improves the input efficiency of the terminal. So regardless of platform, Oh My Zsh will be installed.
+- The above sentence comes from [Oh My Zsh README](https://github.com/ohmyzsh/ohmyzsh/blob/master/README.md), - - - 
+- Plugins such as automatic suggestion, completion, and code highlighting functions will be installed which will tremousdly improve input effectincy for your terminal and make it user friendly for beginners.
+
+- On the first run, Powerlevel10k configuration wizard will ask you a few questions and configure your prompt. If it doesn't trigger automatically, type p10k configure. Configuration wizard creates ~/.p10k.zsh based on your preferences. Additional prompt customization can be done by editing this file. It has plenty of comments to help you navigate through configuration options.
 
 # Install zsh
 ```
@@ -355,7 +330,7 @@ After modification, enter the following command to refresh the configuration and
 ```
 source ~/.zshrc
 ```
-# Install the Oh My Zsh plugin
+# Install the great Oh My Zsh plugin below, manual instructions included
 - Install zsh-syntax-highlighting (code highlighting)
 ```
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
@@ -393,6 +368,9 @@ $ tree ~/.termux
 ├── shell -> /data/data/com.termux/files/usr/bin/zsh
 └── termux.properties
 ```
+
+# Misc commands not installed / included in the script
+
 # Modify the greeting of the startup page
 ![start screen](https://i.imgur.com/TIzjpN9.jpg)
 - This information will be helpful when you first come into contact with Termux, but with a deeper understanding of Termux and the desire to control human instincts, you will definitely want to replace it. I find that most of my friends will use their IDs in large fonts. Way to present.
@@ -404,4 +382,30 @@ And for someone like me who advocates minimalism, choose to keep it from showing
 ```
 touch ~/.hushlogin
 ```
+# Replace domestic software source
+##### https://wiki.termux.com/wiki/Package_Management 
+By default, the software package download speed is very slow. You can speed up the software package download speed by replacing the domestic software source. check the main wiki link for more information
+To prevent modification errors, first back up the source list file:
+```
+cp $PREFIX/etc/apt/sources.list $PREFIX/etc/apt/sources.list.bak
+```
+reduction:cp $PREFIX/etc/apt/sources.list.bak $PREFIX/etc/apt/sources.list
+Use `sed` the command to modify a key:
+```
+sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://main.termux-mirror.ml stable mainn@' $PREFIX/etc/apt/sources.list
+```
+You can also enter `apt edit-sources` manually edited source files. Replace the default official source with the mirror source of  Xeffyr https://main.termux-mirror.ml.
++ Note: Change this main.termux-mirror.ml to the best mirror you find for you. https://github.com/termux/termux-packages/wiki/Mirrors check from here for more info.
 
+# Check modification:
+```
+$ cat $PREFIX/etc/apt/sources.list
+-The main termux repository:
+-deb https://dl.bintray.com/termux/termux-packages-24 stable main
+deb https://main.termux-mirror.ml stable main
+```
+# Last update:
+```
+pkg up
+```
+If the card progresses, exit the process of Termux, reopen it, and run `dpkg --configure -a` to repair it.
