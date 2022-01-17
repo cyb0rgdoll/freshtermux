@@ -13,15 +13,15 @@ bash newscript.sh
 
 # Features of this script included. 
 
-  * [Homescreen]
-  * [Common shortcut keys]
-  * [Extended function buttons]
-  * [Access external storage]
+  * Homescreen
+  * Common shortcut keys
+  * Extended function buttons
+  * Access external storage
   * Sudo / proot, common tools to be installed
-  * [Custom extended function buttons 
-  * [Themes; colours and fonts]
-  * [Zsh and Plugins included 
-  * [A Simple wiki](https://github.com/Towha/Termux/wiki)
+  * Custom extended function buttons 
+  * Themes; colours and fonts
+  * Oh my Zsh setup [Plugins included]
+  * 
   
 
 ## Options and menus
@@ -185,75 +185,6 @@ storage
 ```
 - You can also access the root directory of external storage through / sdcard.
 
-# SSH connection
-As a Linux terminal or server, SSH is required.  Whether you are SSHing to Ter­mux or using Ter­mux to connect to other hosts, you need to install openssh first.
-```
-pkg i -y openssh
-```
-- Termux uses SSH to connect to other hosts
- Basic operation, ssh command:
-```
-ssh User@Host -p Port
-```
-# SSH to Termux
-After all, the mobile phone is too restrictive to operate, and it is very elegant to operate through a SSH connection on the computer.
-
-- set password:
-```
- passwd
-```
- - View username:
-```
- whoami
-```
- Since Ter­mux is a single-user environment, this step is not necessary.  You can log in using any username.
-View IP address:
-```
- ifconfig
-```
- Start the SSH server:
-```
- sshd
-```
- The SSH server program is not started by default, and it needs to be restarted every time the application is closed and opened.  I will explain how to start the SSH server later. 
- Gathering the three elements of SSH, you can now enter ssh commands in a computer terminal or use other SSH clients to connect.  Note that Ter­mux's SSH port is 8022 also you are gonna have to have your ports opened to access it. 
-```
- ssh User @ Host -p 8022
-```
- - After executing the ssh command, you can enter the password to connect, and then you can easily perform various operations on the computer.
-
-# A simple showcase of neofetch on localhost
-![neofetch](https://i.imgur.com/wueHxNv.png)
-
-- Configure SSH key login
- If you need to expose Ter­mux's SSH port to the public network, it is recommended to configure key login for security.
-
-- The operation is no different from a normal Linux distribution, it is a basic operation.  If you do n’t know how to configure, you can refer to the two tutorials: “Configuring SSH Keys for Password-Free Login Using ssh-keygen and ssh-copy-id” and “Configuring SSH Keys for Linux VPS for Password-Free Login Using Xshell”  Make-up lessons are not repeated here.
-
-- Friendly Tip: The path of the sshd_config file is $ PREFIX / etc / ssh / sshd_config
- It is recommended to use the SSH key one-click configuration script, which can get the public key from GitHub or the link and configure it automatically.  As long as you have set up a public key on GitHub, you can log in directly using the SSH key connected to the GitHub repository after configuration.
-
- - SSH server (sshd) starts automatically
- If you do not want to enter Ter­mux every time ssh connects and enter the sshd command, you can set it to start automatically.  There are two cases of sshd self-starting, one is when the Ter­mux application is opened, and the other is when the phone is turned on.
-
- - Start the SSH server automatically when opening the application
- Just add the sshd command to the shell configuration file. For example, if I use zsh, add it to ~ / .zshrc.  If it's bash, add it to ~ / .bashrc.
-```
-echo "sshd" >> ~/.zshrc
-```
-# Start the SSH server after the phone is powered on
- First install the Termux: Boot plug-in. After installation, give the plug-in permission to boot, so that Ter­mux can start automatically after booting.
-
-- Create ~ / .termux / boot / directory (the scripts placed in this directory will be executed after booting Termux).
-```
-mkdir -p ~/.termux/boot/
-```
-- Create a new script in this directory, named start-sshd, and add the sshd command to this file.
-```
-echo 'termux-wake-lock; sshd' > ~/.termux/boot/start-sshd
-```
-The `termux-wake-lock` command prevents the process of the Ter­mux application from freezing when the phone is sleeping.
- After the setting is completed, the phone will automatically start Ter­mux and start the SSH server.
 
 # Install a Linux distribution
 
@@ -403,9 +334,79 @@ Disable Vibration/haptic feedback Add this line to your ~/.termux/termux.propert
 ```
 vi $PREFIX/etc/motd
 ```
-Want minimalism? command below to be inserted in motd file.
+# Want minimalism? Type command below in the motd file.
 ```
 touch ~/.hushlogin
 ```
 
+# SSH connection
+As a Linux terminal or server, SSH is required.  Whether you are SSHing to Ter­mux or using Ter­mux to connect to other hosts, you need to install openssh first.
+```
+pkg i -y openssh
+```
+- Termux uses SSH to connect to other hosts
+ Basic operation, ssh command:
+```
+ssh User@Host -p Port
+```
+# SSH to Termux
+After all, the mobile phone is too restrictive to operate, and it is very elegant to operate through a SSH connection on the computer.
+
+- set password:
+```
+ passwd
+```
+ - View username:
+```
+ whoami
+```
+ Since Ter­mux is a single-user environment, this step is not necessary.  You can log in using any username.
+View IP address:
+```
+ ifconfig
+```
+ Start the SSH server:
+```
+ sshd
+```
+ The SSH server program is not started by default, and it needs to be restarted every time the application is closed and opened.  I will explain how to start the SSH server later. 
+ Gathering the three elements of SSH, you can now enter ssh commands in a computer terminal or use other SSH clients to connect.  Note that Ter­mux's SSH port is 8022 also you are gonna have to have your ports opened to access it. 
+```
+ ssh User @ Host -p 8022
+```
+ - After executing the ssh command, you can enter the password to connect, and then you can easily perform various operations on the computer.
+ -
+ - Configure SSH key login
+ If you need to expose Ter­mux's SSH port to the public network, it is recommended to configure key login for security.
+
+- The operation is no different from a normal Linux distribution, it is a basic operation.  If you do n’t know how to configure, you can refer to the two tutorials: “Configuring SSH Keys for Password-Free Login Using ssh-keygen and ssh-copy-id” and “Configuring SSH Keys for Linux VPS for Password-Free Login Using Xshell”  Make-up lessons are not repeated here.
+
+- Friendly Tip: The path of the sshd_config file is $ PREFIX / etc / ssh / sshd_config
+ It is recommended to use the SSH key one-click configuration script, which can get the public key from GitHub or the link and configure it automatically.  As long as you have set up a public key on GitHub, you can log in directly using the SSH key connected to the GitHub repository after configuration.
+
+ - SSH server (sshd) starts automatically
+ If you do not want to enter Ter­mux every time ssh connects and enter the sshd command, you can set it to start automatically.  There are two cases of sshd self-starting, one is when the Ter­mux application is opened, and the other is when the phone is turned on.
+
+ - Start the SSH server automatically when opening the application
+ Just add the sshd command to the shell configuration file. For example, if I use zsh, add it to ~ / .zshrc.  If it's bash, add it to ~ / .bashrc.
+```
+echo "sshd" >> ~/.zshrc
+```
+# Start the SSH server after the phone is powered on
+ First install the Termux: Boot plug-in. After installation, give the plug-in permission to boot, so that Ter­mux can start automatically after booting.
+
+- Create ~ / .termux / boot / directory (the scripts placed in this directory will be executed after booting Termux).
+```
+mkdir -p ~/.termux/boot/
+```
+- Create a new script in this directory, named start-sshd, and add the sshd command to this file.
+```
+echo 'termux-wake-lock; sshd' > ~/.termux/boot/start-sshd
+```
+The `termux-wake-lock` command prevents the process of the Ter­mux application from freezing when the phone is sleeping.
+ After the setting is completed, the phone will automatically start Ter­mux and start the SSH server.
+
+
+# A simple showcase of neofetch on localhost
+![neofetch](https://i.imgur.com/wueHxNv.png)
 
