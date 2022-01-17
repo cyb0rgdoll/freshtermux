@@ -2,7 +2,7 @@
 A pre-configured, user friendly, easy termux shell for your android phone / tablet / device. 
 Termux is a powerful Android app which is designed to install linux packages on your Android devices, programming languages such as Shell, Python, C, C++, Perl, Ruby, Java and many more useful packages. This script will help you get cranking at it with no errors from scripts, hassles or broken installations if you are new to termux.
 
-![Termux](https://i.imgur.com/8IuYLRl.jpg)
+(https://play-lh.googleusercontent.com/m3oqSZCwmitiZ-Im-CQu_rqT5eLHilOp5IudBynv3COJUumFzuQaP2dgTDxRL_03f4x2)
  
 Download termux from [fdroid](https://f-droid.org/packages/com.termux/)
 
