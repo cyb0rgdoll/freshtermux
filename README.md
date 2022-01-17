@@ -248,7 +248,8 @@ After modification, enter the following command to refresh the configuration and
 ```
 source ~/.zshrc
 ```
-# Install the great Oh My Zsh plugin below, manual instructions included
+# Useful Oh My Zsh plugins below (manual commands included)
+
 - Install zsh-syntax-highlighting (code highlighting)
 ```
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
@@ -275,6 +276,7 @@ Last applied configuration
 source ~/.zshrc
 ```
 # Modify terminal color
+
 To modify the color you need to install [Termux: Styling](https://wiki.termux.com/wiki/Termux:Styling)plugin, installed after a long press the screen to enter the More...menu, choose Styleyou can set the color and font. This was mentioned in the previous article when we introduced menus and options.
 ![styling](https://i.imgur.com/x9VIB0z.png)
 - Choosing your favorite color and font, the set will `~/.termux` generate matching files in the directory `colors.properties` and font files font.ttf, these two files can be backed up, after only need to import, you no longer need to install the plugin.
