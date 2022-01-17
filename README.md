@@ -186,9 +186,6 @@ storage
 - You can also access the root directory of external storage through / sdcard.
 
 
-# Install a Linux distribution
-
-
 # Custom extended function buttons
 The default function buttons are too simple and do not have the left and right arrow keys, which is not convenient to use. Fortunately you can `~/.termux/termux.properties` customize the key configuration file.
 
@@ -363,6 +360,7 @@ After all, the mobile phone is too restrictive to operate, and it is very elegan
  whoami
 ```
  Since Ter­mux is a single-user environment, this step is not necessary.  You can log in using any username.
+ 
 View IP address:
 ```
  ifconfig
@@ -407,7 +405,67 @@ echo 'termux-wake-lock; sshd' > ~/.termux/boot/start-sshd
 ```
 The `termux-wake-lock` command prevents the process of the Ter­mux application from freezing when the phone is sleeping.
  After the setting is completed, the phone will automatically start Ter­mux and start the SSH server.
+ 
+ # A script to set up SSHD into a Termux install
+ ```
+apt update
+apt upgrade
+termux-setup-storage
+apt install openssh
+touch ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+ssh-keygen
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+sshd
+termux-open-url https://github.com/tomhiggins/TermuxSSHDsetup
+ ```
+# Install a Linux distribution
 
+Termux provides a package proot-distro which takes care of management of the Linux distributions inside Termux. You can install this utility by executing:
+
+```
+pkg install proot-distro
+```
+
+For now it supports these distributions:
+```
+    Alpine Linux (3.14.x)
+    Arch Linux / Arch Linux 32 / Arch Linux ARM
+    Debian (stable)
+    Fedora 34
+    OpenSUSE (Tumbleweed)
+    Ubuntu (20.04)
+    Void Linux
+```   
+
+To install distribution, just run this command (assuming proot-distro is installed):
+
+proot-distro install <alias>
+
+where "<alias>" should be replaced by chosen distribution, e.g. "alpine". Note that it is expected that you have a stable Internet connection during installation, otherwise download may fail.
+
+After installation, you can start a shell session by executing next command:
+```
+proot-distro login <alias>
+```
+Here is a basic overview of the available proot-distro functionality:
+```
+    proot-distro list - show the supported distributions and their status.
+    proot-distro install - install a distribution.
+    proot-distro login - start a root shell for the distribution.
+    proot-distro remove - uninstall the distribution.
+    proot-distro reset - reinstall the distribution.
+```
+
+Run proot-distro help for built-in usage information. Note that each of commands (with exception of "list") has own built-in usage information which can be viewed by supplying "--help" as argument. More detailed explanation about available functions you can find at project page: https://github.com/termux/proot-distro#functionality-overview
+
+Example of installing Debian and launching shell:
+```
+proot-distro install debian
+proot-distro login debian
+```
 
 # A simple showcase of neofetch on localhost
 ![neofetch](https://i.imgur.com/wueHxNv.png)
