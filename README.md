@@ -8,9 +8,9 @@ Termux is a powerful Android app which is designed to install linux packages on 
 
 ## System requirements:
 
-Android 7.0 - 12.0
-CPU: AArch64, ARM, i686, x86_64.
-At least 300 MB of disk space.
+  Android 7.0 - 12.0
+  CPU: AArch64, ARM, i686, x86_64.
+  At least 300 MB of disk space.
  
 Download termux from [fdroid](https://f-droid.org/packages/com.termux/)
 
