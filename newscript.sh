@@ -46,7 +46,7 @@ apt install neofetch -y
 pkg install termux-services -y
 pkg install make -y
 pkg install golang -y
-echo
+echo "${blue} Installing root/sudo to your terminal ${reset}"
 clear
 git clone https://github.com/Towha/termux-sudo 
 cd termux-sudo
@@ -54,7 +54,7 @@ pkg install ncurses-utils
 cat sudo > /data/data/com.termux/files/usr/bin/sudo
 chmod 700 /data/data/com.termux/files/usr/bin/sudo
 cd
-echo "${blue}Good.. we have progressed but to use sudo you actually require ROOT device ${reset}"
+echo "${blue}Good.. we have progressed, to use sudo you actually require ROOT device ${reset}"
 sleep 3
 clear
 #!//data/com.termux/files/usr/bin/bash
@@ -69,7 +69,7 @@ sleep 3
 clear
 rm -rf termux-sudo termux.sh
 clear
-figlet -c Now shall we customize and pretty your shell.. | lolcat -p 100 -a
+figlet -c Now making shell pretty.. | lolcat -p 100 -a
 pkg i -y zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh) --unattended" > /dev/null
@@ -87,10 +87,9 @@ echo -e "${INFO} Making Oh My Zsh so much BETTER..."
         sed -i '/^plugins=/c\plugins=(git z zsh-syntax-highlighting zsh-autosuggestions zsh-completions)' $HOME/.zshrc
     fi
     [ $(uname -o) != Android ] && chsh -s $(which zsh) || chsh -s zsh
-    [ $? == 0 ] && echo -e "${INFO} Oh My Zsh is loaded now！"
+    [ $? == 0 ] && echo -e "${INFO} Oh My Zsh is loaded now！Script by cyb0rgdoll, enjoy.
     zsh
 exit
-
 sleep 3
 clear
 figlet And lastly it is complete 
