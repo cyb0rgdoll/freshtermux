@@ -294,7 +294,7 @@ $ tree ~/.termux
 └── termux.properties
 ```
 
-# --- Misc commands not installed / included in the script  ---
+# --- Optional: Misc commands not installed / included in the script  ---
 
 # Replace domestic software source
 ##### https://wiki.termux.com/wiki/Package_Management 
@@ -400,8 +400,7 @@ View IP address:
 ```
 echo "sshd" >> ~/.zshrc
 ```
-# Start the SSH server after the phone is powered on
- First install the Termux: Boot plug-in. After installation, give the plug-in permission to boot, so that Ter­mux can start automatically after booting.
+# Start the SSH server after the phone is powered on. First install the Termux: Boot plug-in. After installation, give the plug-in permission to boot, so that Ter­mux can start automatically after booting.
 
 - Create ~ / .termux / boot / directory (the scripts placed in this directory will be executed after booting Termux).
 ```
@@ -411,8 +410,7 @@ mkdir -p ~/.termux/boot/
 ```
 echo 'termux-wake-lock; sshd' > ~/.termux/boot/start-sshd
 ```
-The `termux-wake-lock` command prevents the process of the Ter­mux application from freezing when the phone is sleeping.
- After the setting is completed, the phone will automatically start Ter­mux and start the SSH server.
+The `termux-wake-lock` command prevents the process of the Ter­mux application from freezing when the phone is sleeping. After the setting is completed, the phone will automatically start Termux and start the SSH server.
  
  # A script to set up SSHD into a Termux install
  ```
@@ -447,7 +445,6 @@ For now it supports these distributions:
     Ubuntu (20.04)
     Void Linux
 ```   
-
 To install distribution, just run this command (assuming proot-distro is installed):
 
 proot-distro install <alias>
@@ -456,7 +453,7 @@ where "<alias>" should be replaced by chosen distribution, e.g. "alpine". Note t
 
 After installation, you can start a shell session by executing next command:
 ```
-proot-distro login <alias>
+  proot-distro login <alias>
 ```
 Here is a basic overview of the available proot-distro functionality:
 ```
