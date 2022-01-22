@@ -3,16 +3,16 @@
 
 ![termux](https://play-lh.googleusercontent.com/m3oqSZCwmitiZ-Im-CQu_rqT5eLHilOp5IudBynv3COJUumFzuQaP2dgTDxRL_03f4x2)
 
-A pre-configured, user friendly, easy termux shell for your android phone / tablet / device. 
+A pre-configured, user-friendly, easy termux shell for your android phone / tablet / device. 
 Termux is a powerful Android app which is designed to install linux packages on your Android devices, programming languages such as Shell, Python, C, C++, Perl, Ruby, Java and many more useful packages. This script will help you get cranking at it with no errors from scripts, hassles or broken installations if you are new to termux.
 
 ## System requirements:
 
-  Android 7.0 - 12.0
-  CPU: AArch64, ARM, i686, x86_64.
-  At least 300 MB of disk space.
+  * Android 7.0 - 12.0
+  * CPU: AArch64, ARM, i686, x86_64.
+  * At least 300 MB of disk space.
  
-Download termux from [fdroid](https://f-droid.org/packages/com.termux/)
+--- Download Termux from [fdroid](https://f-droid.org/packages/com.termux/) ---
 
 ## To install everything in this guide, download the file, type in terminal where your downloaded file is;
 ```
