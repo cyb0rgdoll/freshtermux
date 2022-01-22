@@ -87,11 +87,8 @@ echo -e "${INFO} Making Oh My Zsh so much BETTER..."
         sed -i '/^plugins=/c\plugins=(git z zsh-syntax-highlighting zsh-autosuggestions zsh-completions)' $HOME/.zshrc
     fi
     [ $(uname -o) != Android ] && chsh -s $(which zsh) || chsh -s zsh
-    [ $? == 0 ] && echo -e "${INFO} Oh My Zsh is loaded now！Script by cyb0rgdoll, enjoy.
+    [ $? == 0 ] && echo -e "${INFO} Oh My Zsh is loaded now！Script by cyb0rgdoll, enjoy :)
     zsh
 exit
 sleep 3
-clear
-figlet And lastly it is complete 
-sleep 5
 clear
