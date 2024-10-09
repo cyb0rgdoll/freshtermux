@@ -15,7 +15,7 @@ clear
 apt install figlet -y
 gem install lolcat
 clear 
-figlet -c Welcome to fresh TERMUX 
+figlet -c Welcome to FRESH TERMUX 1.0
 echo "${black}                  Upgraded ${return}"
 sleep 5
 echo "${blue} Requesting access to storage .. ${reset}"
