@@ -107,7 +107,7 @@ The following are some of the shortcuts commonly used in the terminal, and they 
 
 ## Extended function buttons
 
-As mentioned earlier, Termux can use the volume keys to implement shortcut keys. Personally, using volume keys is not very inconvenient. Termux also provides buttons for screen extensions. You can use volume plus + Q or volume plus + K to show and hide.
+As mentioned earlier, Termux can use the volume keys to implement shortcut keys. Personally, using volume keys is not very convenient. Termux also provides buttons for screen extensions. You can use volume plus + Q or volume plus + K to show and hide.
 
 <img src="https://i.imgur.com/bN5Uazd.jpg" alt="controls less" width="450">
 
@@ -375,7 +375,12 @@ To prevent modification errors, first back up the source list file:
 cp $PREFIX/etc/apt/sources.list $PREFIX/etc/apt/sources.list.bak
 ```
 
-reduction:cp $PREFIX/etc/apt/sources.list.bak $PREFIX/etc/apt/sources.list
+To restore it, run:
+
+```
+cp $PREFIX/etc/apt/sources.list.bak $PREFIX/etc/apt/sources.list
+```
+
 Use `sed` the command to modify a key:
 
 ```
