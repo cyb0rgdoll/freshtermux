@@ -17,7 +17,7 @@ Termux is a powerful Android app which is designed to install linux packages on 
 ## To install everything in this guide, download the file, type in terminal where your downloaded file is;
 ```
 chmod +x newscript.sh
-bash newscript.sh
+./newscript.sh
 or
 bash newscript.sh
 ```
