@@ -1,20 +1,20 @@
 # freshtermux
 
-
 <img src="https://play-lh.googleusercontent.com/m3oqSZCwmitiZ-Im-CQu_rqT5eLHilOp5IudBynv3COJUumFzuQaP2dgTDxRL_03f4x2" alt="termux" width="450">
 
 A pre-configured, user-friendly, easy termux shell for your android phone / tablet / device.
 Termux is a powerful Android app which is designed to install linux packages on your Android devices, programming languages such as Shell, Python, C, C++, Perl, Ruby, Java and many more useful packages. This script will help you get cranking at it with no errors from scripts, hassles or broken installations if you are new to termux.
 
-## System requirements:
+## System requirements
 
-  * Android 7.0 - 12.0
-  * CPU: AArch64, ARM, i686, x86_64.
-  * At least 300 MB of disk space.
+- Android 7.0 - 12.0
+- CPU: AArch64, ARM, i686, x86_64.
+- At least 300 MB of disk space.
 
---- Download Termux from [fdroid](https://f-droid.org/packages/com.termux/) ---
+Download Termux from [fdroid](https://f-droid.org/packages/com.termux/)
 
-## To install everything in this guide, download the file, type in terminal where your downloaded file is;
+## To install everything in this guide, download the file, type in terminal where your downloaded file is
+
 ```
 chmod +x newscript.sh
 ./newscript.sh
@@ -22,20 +22,20 @@ or
 bash newscript.sh
 ```
 
-# Features of this script included.
+## Features of this script included
 
-  * Homescreen
-  * Common shortcut keys
-  * Extended function buttons
-  * Access external storage
-  * Common tools to be installed
-  * Custom extended function buttons
-  * Themes; colours and fonts
-  * Oh my Zsh setup [Plugins included]
-  * Powerline included
-
+- Homescreen
+- Common shortcut keys
+- Extended function buttons
+- Access external storage
+- Common tools to be installed
+- Custom extended function buttons
+- Themes; colours and fonts
+- Oh my Zsh setup [Plugins included]
+- Powerline included
 
 ## Options and menus
+
 A long press on the screen will display a selectable copy cursor, along with the Copy, Paste, More ... options.
 
 <img src="https://i.imgur.com/DNvRPLY.jpg" alt="Options screen" width="450">
@@ -57,17 +57,19 @@ Long press on screen
     └── Keep screen on:
     └── Help: Help documentation (Termux Wiki)
 ```
+
 Swipe right from the left edge of the screen to drag out the navigation bar, where you can create, switch, rename sessions, and bring up input methods.
 
 <img src="https://i.imgur.com/0zfWmce.png" alt="Left multipanel" width="450">
 
-# Common shortcut keys
+## Common shortcut keys
 
- When using the terminal, you need to use the Alt, Ctrl, Esc and other keys, but these keys are not available on the phone.
+When using the terminal, you need to use the Alt, Ctrl, Esc and other keys, but these keys are not available on the phone.
 
- In Termux, you can use the volume down button to simulate the Ctrl key. For example, volume + L is equivalent to pressing Ctrl + L on the keyboard.
+In Termux, you can use the volume down button to simulate the Ctrl key. For example, volume + L is equivalent to pressing Ctrl + L on the keyboard.
 
- The following are some of the shortcuts commonly used in the terminal, and they also work in Termux.
+The following are some of the shortcuts commonly used in the terminal, and they also work in Termux.
+
 ```
  Ctrl + A-> cursor to start position
  Ctrl + E-> cursor to the end
@@ -102,17 +104,23 @@ Swipe right from the left edge of the screen to drag out the navigation bar, whe
  Volume + Q-> Show extra button view
  Volume + K-> Ibid
 ```
-# Extended function buttons
- As mentioned earlier, Termux can use the volume keys to implement shortcut keys. Personally, using volume keys is not very inconvenient. Termux also provides buttons for screen extensions. You can use volume plus + Q or volume plus + K to show and hide.
+
+## Extended function buttons
+
+As mentioned earlier, Termux can use the volume keys to implement shortcut keys. Personally, using volume keys is not very inconvenient. Termux also provides buttons for screen extensions. You can use volume plus + Q or volume plus + K to show and hide.
+
 <img src="https://i.imgur.com/bN5Uazd.jpg" alt="controls less" width="450">
+
 In addition, the function keys can be moved to the left to call up the text input box, which can more conveniently paste and modify the instructions to be entered more finely.
+
 <img src="https://i.imgur.com/0LYzWQR.jpg" alt="controls sampled up" width="450">
 
-# Package management
+## Package management
 
 In addition to supporting the apt command, Termux also encapsulates the pkg command. The pkg command is backward compatible with the apt command. The official recommendation is to use the pkg command, because it will automatically update the apt list when installing or upgrading the package, which means that performing pkg upgrade is equivalent to performing apt update && apt upgrade, which simplifies the operation process.
 
-# Simple default commands
+## Simple default commands
+
 ```
  pkg search >> search a package
  pkg install >> installation of a package, shorthand pkg i
@@ -125,8 +133,10 @@ In addition to supporting the apt command, Termux also encapsulates the pkg comm
  pkg clean >> remove unused packages
 ```
 
-# Differences between Termux and the standard Linux directory structure
+## Differences between Termux and the standard Linux directory structure
+
 Unlike most Linux distributions, Termux does not follow file system hierarchy standards, and you cannot find directories such as /bin, /etc, /usr, /tmp and so on in standard paths. For convenience, Termux provides a special environment variable: PREFIX, which is equivalent to the /usr directory.
+
 ```
 $ tree -d -L 1 $PREFIX
 /data/data/com.termux/files/usr
@@ -140,17 +150,23 @@ $ tree -d -L 1 $PREFIX
 ├── tmp
 └── var
 ```
+
 - In addition, the user home directory is also in an unconventional location.
+
 ```
 $ echo $HOME
 /data/data/com.termux/files/home
 ```
+
 - Without root privileges, it is impossible to manipulate the root directory.
+
 ```
 $ ls /
 ls: cannot open directory '/': Permission denied
 ```
+
 - You can install proot for this and use the termux-chroot command to simulate the root environment and the standard Linux directory structure.
+
 ```
 $ pkg i -y proot
 $ termux-chroot
@@ -159,31 +175,43 @@ bin  data  dev  etc  home  lib  proc  root  sbin  share  storage  system  tmp  u
 $ ls /usr
 bin  etc  include  lib  libexec  share  src  tmp  var
 ```
+
 **This can be useful for some programs that must use a standard path.**
 
-# Root Authority
+## Root Authority
+
 The solution is to install tsu for root privileges, tsu is an alternative to su in Termux.
 
- Install tsu:
+Install tsu:
+
 ```
  pkg i -y tsu
 ```
- Execute the command with root privileges:
+
+Execute the command with root privileges:
+
 ```
  tsudo command
 ```
- Switch to root user:
+
+Switch to root user:
+
 ```
  tsu
 ```
- Under the root user, enter the exit command or press Ctrl + D to return to the normal user.
 
-# Access external storage
- Termux can only access its own internal data by default. If you want to access other data in the phone, after entering the following command, the phone will pop up a window for requesting permissions and allow it.
+Under the root user, enter the exit command or press Ctrl + D to return to the normal user.
+
+## Access external storage
+
+Termux can only access its own internal data by default. If you want to access other data in the phone, after entering the following command, the phone will pop up a window for requesting permissions and allow it.
+
 ```
 termux-setup-storage
 ```
+
 - This will create the $HOME/storage directory, and subdirectories in this directory will be symbolically linked to some common directories in phone storage.
+
 ```
 $ tree storage
 storage
@@ -194,33 +222,43 @@ storage
 ├── pictures -> /storage/emulated/0/Pictures
 └── shared -> /storage/emulated/0
 ```
+
 - You can also access the root directory of external storage through /sdcard.
 
+## Custom extended function buttons
 
-# Custom extended function buttons
 The default function buttons are too simple and do not have the left and right arrow keys, which is not convenient to use. Fortunately you can `~/.termux/termux.properties` customize the key configuration file.
 
 <img src="https://i.imgur.com/m25fnZC.jpg" alt="upgraded panel" width="450">
 
 - If you want to set it up like this, you can add the following to the configuration file:
+
 ```
 extra-keys = [['ESC','/','-','HOME','UP','END','PGUP','DEL'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP']]
 ```
-# Easy mode code below, I usually do it with one click on keyboard:
+
+**Easy mode code below, I usually do it with one click on keyboard:**
+
 ```
 mkdir -p ~/.termux && echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP','DEL'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP']]" > ~/.termux/termux.properties
 ```
+
 - Finally, enter the following command to reload the configuration, or close the application and then open it again.
+
 ```
 termux-reload-settings
 ```
 
-# Install common tools
+## Install common tools
+
 Install some basic common tools to facilitate subsequent tossing.
+
 ```
 pkg i -y git curl wget tree vim nano tmux htop
 ```
-# Install and configure Oh My Zsh
+
+## Install and configure Oh My Zsh
+
 - **Oh My Zsh will not make you a 10x developer ... but you may feel like one.**
 
 - The above sentence comes from [Oh My Zsh README](https://github.com/ohmyzsh/ohmyzsh/blob/master/README.md), - - -
@@ -228,66 +266,94 @@ pkg i -y git curl wget tree vim nano tmux htop
 
 - On the first run, Powerlevel10k configuration wizard will ask you a few questions and configure your prompt. If it doesn't trigger automatically, type p10k configure. Configuration wizard creates ~/.p10k.zsh based on your preferences. Additional prompt customization can be done by editing this file. It has plenty of comments to help you navigate through configuration options.
 
-# Install zsh
+## Install zsh
+
 ```
 pkg i -y zsh
 ```
+
 - Install Oh My Zsh
 - Download and install using curl
+
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
+
 - Download and install using wget
+
 ```
 sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
+
 Oh My Zsh will prompt you to set zsh as the default sehll after installation. If not prompted, enter the following command to set it up:
+
 ```
 chsh -s zsh
 ```
-# Modify Oh My Zsh Theme
+
+## Modify Oh My Zsh Theme
+
 Oh My Zsh has a lot of [built-in themes](https://github.com/ohmyzsh/ohmyzsh/wiki/themes), just need to modify the configuration file to enable. You can also choose to install [external themes](https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes), such as [Powerlevel10k](https://github.com/romkatv/powerlevel10k) and [Syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
 - The theme I use is ys , it's simple and practical, not fancy. Use `sed` the command to modify a key:
+
 ```
 sed -i '/^ZSH_THEME=/c\ZSH_THEME="ys"' ~/.zshrc
 ```
+
 After modification, enter the following command to refresh the configuration and you can see the effect:
+
 ```
 source ~/.zshrc
 ```
-# Useful Oh My Zsh plugins below (manual commands included)
+
+## Useful Oh My Zsh plugins below (manual commands included)
 
 - Install zsh-syntax-highlighting (code highlighting)
+
 ```
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 ```
+
 Install zsh-autosuggestions (auto suggestion)
+
 ```
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 ```
+
 Install zsh-completions (autocompletion)
+
 ```
 git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
 ```
+
 zsh-completions plug-ins need to autoload -U compinit && compinitadd to .zshrc. Enter the command to add it with one click:
+
 ```
 [ -z "`grep "autoload -U compinit && compinit" ~/.zshrc`" ] && echo "autoload -U compinit && compinit" >> ~/.zshrc
 ```
+
 The need to enable plug-ins written to the configuration file, use the sedcommand to a key operation.
+
 ```
 sed -i '/^plugins=/c\plugins=(git z zsh-syntax-highlighting zsh-autosuggestions zsh-completions)' ~/.zshrc
 ```
+
 If you have a plugin you want to add, write it in parentheses, and separate the plugin names with spaces.
 Last applied configuration
+
 ```
 source ~/.zshrc
 ```
-# Modify terminal color
+
+## Modify terminal color
 
 To modify the color you need to install [Termux: Styling](https://wiki.termux.com/wiki/Termux:Styling)plugin, installed after a long press the screen to enter the More...menu, choose Styleyou can set the color and font. This was mentioned in the previous article when we introduced menus and options.
+
 <img src="https://i.imgur.com/x9VIB0z.png" alt="styling" width="450">
+
 - Choosing your favorite color and font, the set will `~/.termux` generate matching files in the directory `colors.properties` and font files font.ttf, these two files can be backed up, after only need to import, you no longer need to install the plugin.
+
 ```
 $ tree ~/.termux
 /data/data/com.termux/files/home/.termux
@@ -297,37 +363,47 @@ $ tree ~/.termux
 └── termux.properties
 ```
 
-# --- Optional: Misc commands not installed / included in the script ---
+## Optional: Misc commands not installed / included in the script
 
-# Replace domestic software source
-##### https://wiki.termux.com/wiki/Package_Management
+## Replace domestic software source
+
+https://wiki.termux.com/wiki/Package_Management
 By default, the software package download speed is very slow. You can speed up the software package download speed by replacing the domestic software source. check the main wiki link for more information
 To prevent modification errors, first back up the source list file:
+
 ```
 cp $PREFIX/etc/apt/sources.list $PREFIX/etc/apt/sources.list.bak
 ```
+
 reduction:cp $PREFIX/etc/apt/sources.list.bak $PREFIX/etc/apt/sources.list
 Use `sed` the command to modify a key:
+
 ```
 sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://main.termux-mirror.ml stable mainn@' $PREFIX/etc/apt/sources.list
 ```
-You can also enter `apt edit-sources` manually edited source files. Replace the default official source with the mirror source of Xeffyr https://main.termux-mirror.ml.
-+ Note: Change this main.termux-mirror.ml to the best mirror you find for you. https://github.com/termux/termux-packages/wiki/Mirrors check from here for more info.
 
-# Check modification:
+You can also enter `apt edit-sources` manually edited source files. Replace the default official source with the mirror source of Xeffyr https://main.termux-mirror.ml.
+
+- Note: Change this main.termux-mirror.ml to the best mirror you find for you. https://github.com/termux/termux-packages/wiki/Mirrors check from here for more info.
+
+**Check modification:**
+
 ```
 $ cat $PREFIX/etc/apt/sources.list
 -The main termux repository:
 -deb https://dl.bintray.com/termux/termux-packages-24 stable main
 deb https://main.termux-mirror.ml stable main
 ```
-# Last update:
+
+**Last update:**
+
 ```
 pkg up
 ```
+
 If the card progresses, exit the process of Termux, reopen it, and run `dpkg --configure -a` to repair it.
 
-# Customizing Termux
+## Customizing Termux
 
 Enable Dark UI Mode in Termux Add this line to your ~/.termux/termux.properties
 
@@ -337,86 +413,119 @@ Disable Vibration/haptic feedback Add this line to your ~/.termux/termux.propert
 
 ``` bell-character=ignore ```
 
-# Modify the greeting of the startup page
+## Modify the greeting of the startup page
+
 <img src="https://i.imgur.com/TIzjpN9.jpg" alt="start screen" width="450">
+
 - This information will be helpful when you first come into contact with Termux, but with a deeper understanding of Termux and the desire to control human instincts, you will definitely want to replace it. I find that most of my friends will use their IDs in large fonts. Way to present.
 
 ```
 vi $PREFIX/etc/motd
 ```
-# Want minimalism? Type command below in the motd file.
+
+**Want minimalism? Type command below in the motd file.**
+
 ```
 touch ~/.hushlogin
 ```
 
-# SSH connection
+## SSH connection
+
 As a Linux terminal or server, SSH is required. Whether you are SSHing to Termux or using Termux to connect to other hosts, you need to install openssh first.
+
 ```
 pkg i -y openssh
 ```
+
 - Termux uses SSH to connect to other hosts
- Basic operation, ssh command:
+
+Basic operation, ssh command:
+
 ```
 ssh User@Host -p Port
 ```
-# SSH to Termux
+
+## SSH to Termux
+
 After all, the mobile phone is too restrictive to operate, and it is very elegant to operate through a SSH connection on the computer.
 
 - set password:
+
 ```
  passwd
 ```
- - View username:
+
+- View username:
+
 ```
  whoami
 ```
- Since Termux is a single-user environment, this step is not necessary. You can log in using any username.
+
+Since Termux is a single-user environment, this step is not necessary. You can log in using any username.
 
 View IP address:
+
 ```
  ifconfig
 ```
- Start the SSH server:
+
+Start the SSH server:
+
 ```
  sshd
 ```
- The SSH server program is not started by default, and it needs to be restarted every time the application is closed and opened. I will explain how to start the SSH server later.
- Gathering the three elements of SSH, you can now enter ssh commands in a computer terminal or use other SSH clients to connect. Note that Termux's SSH port is 8022 also you are gonna have to have your ports opened to access it.
+
+The SSH server program is not started by default, and it needs to be restarted every time the application is closed and opened. I will explain how to start the SSH server later.
+Gathering the three elements of SSH, you can now enter ssh commands in a computer terminal or use other SSH clients to connect. Note that Termux's SSH port is 8022 also you are gonna have to have your ports opened to access it.
+
 ```
  ssh User @ Host -p 8022
 ```
- - After executing the ssh command, you can enter the password to connect, and then you can easily perform various operations on the computer.
- -
- - Configure SSH key login
- If you need to expose Termux's SSH port to the public network, it is recommended to configure key login for security.
+
+- After executing the ssh command, you can enter the password to connect, and then you can easily perform various operations on the computer.
+- Configure SSH key login
+
+If you need to expose Termux's SSH port to the public network, it is recommended to configure key login for security.
 
 - The operation is no different from a normal Linux distribution, it is a basic operation. If you do n’t know how to configure, you can refer to the two tutorials: “Configuring SSH Keys for Password-Free Login Using ssh-keygen and ssh-copy-id” and “Configuring SSH Keys for Linux VPS for Password-Free Login Using Xshell” Make-up lessons are not repeated here.
 
 - Friendly Tip: The path of the sshd_config file is $PREFIX/etc/ssh/sshd_config
- It is recommended to use the SSH key one-click configuration script, which can get the public key from GitHub or the link and configure it automatically. As long as you have set up a public key on GitHub, you can log in directly using the SSH key connected to the GitHub repository after configuration.
 
- - SSH server (sshd) starts automatically
- If you do not want to enter Termux every time ssh connects and enter the sshd command, you can set it to start automatically. There are two cases of sshd self-starting, one is when the Termux application is opened, and the other is when the phone is turned on.
+It is recommended to use the SSH key one-click configuration script, which can get the public key from GitHub or the link and configure it automatically. As long as you have set up a public key on GitHub, you can log in directly using the SSH key connected to the GitHub repository after configuration.
 
- - Start the SSH server automatically when opening the application
- Just add the sshd command to the shell configuration file. For example, if I use zsh, add it to ~/.zshrc. If it's bash, add it to ~/.bashrc.
+- SSH server (sshd) starts automatically
+
+If you do not want to enter Termux every time ssh connects and enter the sshd command, you can set it to start automatically. There are two cases of sshd self-starting, one is when the Termux application is opened, and the other is when the phone is turned on.
+
+- Start the SSH server automatically when opening the application
+
+Just add the sshd command to the shell configuration file. For example, if I use zsh, add it to ~/.zshrc. If it's bash, add it to ~/.bashrc.
+
 ```
 echo "sshd" >> ~/.zshrc
 ```
-# Start the SSH server after the phone is powered on. First install the Termux: Boot plug-in. After installation, give the plug-in permission to boot, so that Termux can start automatically after booting.
+
+## Start the SSH server after the phone is powered on
+
+First install the Termux: Boot plug-in. After installation, give the plug-in permission to boot, so that Termux can start automatically after booting.
 
 - Create ~/.termux/boot/ directory (the scripts placed in this directory will be executed after booting Termux).
+
 ```
 mkdir -p ~/.termux/boot/
 ```
+
 - Create a new script in this directory, named start-sshd, and add the sshd command to this file.
+
 ```
 echo 'termux-wake-lock; sshd' > ~/.termux/boot/start-sshd
 ```
+
 The `termux-wake-lock` command prevents the process of the Termux application from freezing when the phone is sleeping. After the setting is completed, the phone will automatically start Termux and start the SSH server.
 
- # A script to set up SSHD into a Termux install
- ```
+## A script to set up SSHD into a Termux install
+
+```
 apt update
 apt upgrade
 termux-setup-storage
@@ -429,8 +538,9 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 sshd
 termux-open-url https://github.com/tomhiggins/TermuxSSHDsetup
- ```
-# Install a Linux distribution
+```
+
+## Install a Linux distribution
 
 Termux provides a package proot-distro which takes care of management of the Linux distributions inside Termux. You can install this utility by executing:
 
@@ -439,6 +549,7 @@ pkg install proot-distro
 ```
 
 For now it supports these distributions:
+
 ```
     Alpine Linux (3.14.x)
     Arch Linux / Arch Linux 32 / Arch Linux ARM
@@ -448,6 +559,7 @@ For now it supports these distributions:
     Ubuntu (20.04)
     Void Linux
 ```
+
 To install distribution, just run this command (assuming proot-distro is installed):
 
 proot-distro install <alias>
@@ -455,10 +567,13 @@ proot-distro install <alias>
 where "<alias>" should be replaced by chosen distribution, e.g. "alpine". Note that it is expected that you have a stable Internet connection during installation, otherwise download may fail.
 
 After installation, you can start a shell session by executing next command:
+
 ```
   proot-distro login <alias>
 ```
+
 Here is a basic overview of the available proot-distro functionality:
+
 ```
     proot-distro list - show the supported distributions and their status.
     proot-distro install - install a distribution.
@@ -470,11 +585,12 @@ Here is a basic overview of the available proot-distro functionality:
 Run proot-distro help for built-in usage information. Note that each of commands (with exception of "list") has own built-in usage information which can be viewed by supplying "--help" as argument. More detailed explanation about available functions you can find at project page: https://github.com/termux/proot-distro#functionality-overview
 
 Example of installing Debian and launching shell:
+
 ```
 proot-distro install debian
 proot-distro login debian
 ```
 
-# A simple showcase of neofetch on localhost
-<img src="https://i.imgur.com/wueHxNv.png" alt="neofetch" width="450">
+## A simple showcase of neofetch on localhost
 
+<img src="https://i.imgur.com/wueHxNv.png" alt="neofetch" width="450">
