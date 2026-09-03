@@ -50,7 +50,7 @@ Long press on screen
  ├── PASTE: Paste
  ├── More: More
     ├── Select URL: Select URL
-    └── Share transcipt: transfer all output of the current session (via Android api)
+    └── Share transcript: transfer all output of the current session (via Android api)
     └── Reset: Reset
     └── Kill process: Kill the current terminal session process
     └── Style: Style (requires Termux: Styling plugin)
@@ -224,7 +224,7 @@ pkg i -y git curl wget tree vim nano tmux htop
 - **Oh My Zsh will not make you a 10x developer ... but you may feel like one.**
 
 - The above sentence comes from [Oh My Zsh README](https://github.com/ohmyzsh/ohmyzsh/blob/master/README.md), - - -
-- Plugins such as automatic suggestion, completion, and code highlighting functions will be installed which will tremousdly improve input effectincy for your terminal and make it user friendly for beginners.
+- Plugins such as automatic suggestion, completion, and code highlighting functions will be installed which will tremendously improve input efficiency for your terminal and make it user friendly for beginners.
 
 - On the first run, Powerlevel10k configuration wizard will ask you a few questions and configure your prompt. If it doesn't trigger automatically, type p10k configure. Configuration wizard creates ~/.p10k.zsh based on your preferences. Additional prompt customization can be done by editing this file. It has plenty of comments to help you navigate through configuration options.
 
